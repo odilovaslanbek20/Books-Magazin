@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Books - Shopping</title>
+    <link rel="shortcut icon" href="./Assets/Images/logo.png" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <header>
+      <nav class="nav container grid" id="nav">
+        <a href="" class="nav_logo grid">
+          <img src="./Images/logo.png.svg" alt="" />
+          <span>BOOKSHOP</span>
+        </a>
+        <div class="nav_menu" id="nav_menu">
+          <ul class="nav_list">
+            <li class="nav_item">
+              <a href="" class="nav_link active-link">Home</a>
+            </li>
+            <li class="nav_item">
+              <a href="" class="nav_link">Magazines</a>
+            </li>
+            <li class="nav_item">
+              <a href="" class="nav_link">Books</a>
+            </li>
+            <li class="nav_item">
+              <a href="" class="nav_link">Textbooks</a>
+            </li>
+            <li class="nav_item">
+              <a href="" class="nav_link">Audiobooks</a>
+            </li>
+          </ul>
+          <div class="nav__close" id="nav-close">
+            <i class="ri-close-line"></i>
+          </div>
+        </div>
+        <div class="nav_icons">
+          <div class="nav__toggle" id="nav-toggle">
+            <i class="ri-menu-fill"></i>
+          </div>
+          <div class="shopping-icon" id="cart">
+            <i class="ri-shopping-cart-2-line">
+              <span class="quantity">0</span></i
+            >
+          </div>
+          <div class="like-icon">
+            <i class="ri-heart-line"><span class="quantity">0</span></i>
+          </div>
+          <div class="user-icon">
+            <i class="ri-user-line"></i>
+          </div>
+          <!-- dark mode -->
+          <div class="light-icon">
+            <i class="ri-sun-line" id="sun"></i>
+            <i class="ri-moon-line hide" id="moon"></i>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main class="main">
+      <section id="home" class="home section">
+        <div class="home_bg">
+          <img
+            src="https://meek-haupia-827c15.netlify.app/Assets/Images/homeBackground.jpg"
+            alt=""
+          />
+          <img
+            src="https://meek-haupia-827c15.netlify.app/Assets/Images/homeBackground2.jpg"
+            alt=""
+          />
+        </div>
+        <div class="buttons">
+          <div class="leftArrow"><i class="ri-arrow-drop-left-line"></i></div>
+          <div class="rightArrow"><i class="ri-arrow-drop-right-line"></i></div>
+        </div>
+      </section>
+      <section id="benefits" class="benefits">
+        <div class="ben_cards container grid">
+          <div class="ben_card">
+            <div class="left">
+              <img
+                class="image-icon"
+                src="./Images/delivery-truck.png.svg"
+                alt=""
+              />
+            </div>
+            <div class="right">
+              <h2>Quick Delivery</h2>
+              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+            </div>
+          </div>
+          <div class="ben_card">
+            <div class="left">
+              <img class="image-icon" src="./Images/pay.png.svg" alt="" />
+            </div>
+            <div class="right">
+              <h2>Pay with Easy</h2>
+              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+            </div>
+          </div>
+          <div class="ben_card">
+            <div class="left">
+              <img
+                class="image-icon"
+                src="./Images/best-price.png.svg"
+                alt=""
+              />
+            </div>
+            <div class="right">
+              <h2>Best Deal</h2>
+              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+            </div>
+          </div>
+          <div class="ben_card">
+            <div class="left">
+              <img
+                class="image-icon"
+                src="./Images/credit-card.png.svg"
+                alt=""
+              />
+            </div>
+            <div class="right">
+              <h2>Secured Payment</h2>
+              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="products" class="products">
+        <h1>Products</h1>
+        <div class="product grid">
+          <div class="product-left">
+            <div class="ctigoriya__container">
+              <h2 class="title-left">Categories</h2>
+            </div>
+            <ul class="collections"></ul>
+          </div>
+          <div class="product-right">
+            <div class="product-right-top">
+              <form class="form grid" action="">
+                <input
+                  type="text"
+                  class="input"
+                  id="mySearch"
+                  placeholder="Search by Title..."
+                />
+                <i class="fa-solid fa-right-left" id="searchBtn"></i>
+              </form>
+            </div>
+            <div class="product-right-bottom grid"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div class="card">
+      <h1>Card</h1>
+      <ul class="listCard"></ul>
+      <div class="checkOut grid">
+        <div class="total">0</div>
+        <div class="closeShopping">Close</div>
+      </div>
+    </div>
+
+    <div class="popCard">
+      <h1>Rename</h1>
+      <form class="popCardForm" action="">
+        <div class="popImageCard">
+          <label class="popImageLabel" for="popImage"
+            >Upload Image
+            <img
+              src="https://www.generationsforpeace.org/wp-content/uploads/2018/03/empty.jpg"
+              alt=""
+              class="popImagish"
+          /></label>
+          <input
+            type="file"
+            name="upload"
+            accept="image/png, image/jpeg"
+            placeholder="Change Image..."
+            id="popImage"
+          />
+        </div>
+        <input type="text" placeholder="Change Title..." class="popTitle" />
+        <input type="text" placeholder="Change Type..." class="popType" />
+        <input type="text" placeholder="Change Author..." class="popAuthor" />
+        <input type="number" placeholder="Change Price..." class="popPrice" />
+      </form>
+      <div class="popCardClose1" id="popCardClose">
+        <i class="ri-close-line"></i>
+      </div>
+      <button class="popCardSaveButton" onclick="popCardSave()">Save</button>
+    </div>
+    <footer>
+      <div class="footer-container">
+        <div class="footer-section">
+          <h2 class="footer-title">BOOKSHOP</h2>
+          <p class="footer-text">
+            Eng yaxshi kitoblarni bizdan toping! Turli janrdagi kitoblar, tez
+            yetkazib berish va qulay to‘lov.
+          </p>
+        </div> 
+
+        <div class="footer-section">
+          <h3 class="footer-title">Tezkor Havolalar</h3>
+          <ul class="footer-links">
+            <li><a href="#">Bosh sahifa</a></li>
+            <li><a href="#">Magazinlar</a></li>
+            <li><a href="#">Kitoblar</a></li>
+            <li><a href="#">Audiokitoblar</a></li>
+            <li><a href="#">Bog‘lanish</a></li>
+          </ul>
+        </div> 
+
+       <div class="footer-section">
+          <h3 class="footer-title">Bizni kuzating</h3>
+          <div class="footer-social">
+            <a href="#"><i class="ri-facebook-fill"></i></a>
+            <a href="#"><i class="ri-instagram-fill"></i></a>
+            <a href="#"><i class="ri-twitter-fill"></i></a>
+            <a href="#"><i class="ri-youtube-fill"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h3 class="footer-title">Yangiliklarga obuna bo‘ling</h3>
+          <form class="footer-form">
+            <input type="email" placeholder="Emailingizni kiriting" />
+            <button type="submit">Obuna bo‘lish</button>
+          </form>
+        </div>
+      </div> 
+
+     <div class="footer-bottom">
+        &copy; 2025 BOOKSHOP. Barcha huquqlar himoyalangan.
+      </div>
+    </footer>   
+
+    <script src="./script.js"></script>
+  </body>
+</html>
