@@ -598,20 +598,17 @@ header .nav .nav_icons .nav__toggle {
   color: var(--color-blue);
   font-size: 1.3rem;
 }
-.none{
-  display: none;
-}
 #heart:hover {
   color: red;
 }
 .card {
   position: fixed;
   top: 0;
-  z-index: 1111;
+  z-index: 9999;
   right: -100%;
   width: 40%;
   background-color: var(--color-cart-back);
-  height: 100vh;
+  height: 100%;
   transition: all 0.5s linear;
 }
 .active .card {
@@ -998,6 +995,27 @@ footer {
   .product {
     grid-template-columns: 150px 1fr !important;
   }
+.products
+  .product
+  .product-right
+  .product-right-bottom
+  .book-card
+  .book-details
+  .buttons {
+  opacity: 1;
+  display: flex;
+  position: relative;
+}
+.products
+  .product
+  .product-right
+  .product-right-bottom
+  .book-card
+  .book-details
+  .buttons
+  button:active {
+  background: blueviolet;
+}
   header .nav .nav_icons .nav__toggle {
     display: flex;
   }
@@ -1092,15 +1110,29 @@ footer {
 }
 @media screen and (max-width:430px){
   .products .product .product-right .product-right-bottom .book-card .book-image {
-    min-height: 300px;
-  }
-  .products .product .product-right .product-right-bottom {
-    grid-template-columns: repeat(1, 1fr);
+    min-height: auto;
   }
   #searchBtn{
     width: 40px;
     transform: translateX(40px);
   }
+}
+
+@media screen and (max-width:390px) {
+  .products .product .product-right .product-right-bottom {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .products
+  .product
+  .product-right
+  .product-right-bottom
+  .book-card{
+  height: auto;
+}
+.products .product .product-right .product-right-bottom .book-card {
+  box-shadow: 0 0 12px 4px #00000017;
+  border-radius: 8px;
+}
 }
 
 @media screen and (max-width:320px) {
