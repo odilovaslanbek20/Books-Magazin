@@ -19,6 +19,7 @@ let collections = document.querySelector(".collections");
 const navMenu = document.getElementById("nav_menu"),
   navToggle = document.getElementById("nav-toggle"),
   navClose = document.getElementById("nav-close");
+let userModal = document.getElementById("userModal");
 
 // ============= menu bar ==============
 
@@ -29,6 +30,10 @@ navToggle.addEventListener("click", () => {
 navClose.addEventListener("click", () => {
   navMenu.classList.remove("show-menu");
 });
+
+userModal.addEventListener("click", () => {
+  window.location.href = "registriatsiya.html"
+})
 
 // ============= dark mode  ==============
 
@@ -50,6 +55,7 @@ closeShopping.addEventListener("click", () => {
 window.onscroll = () => {
   body.classList.remove("active");
 };
+
 // ================================== header slider ==================================
 
 let imgs = homeBg.querySelectorAll("img");
@@ -91,12 +97,12 @@ async function getData() {
     console.log(data);
 
     let bookImages = await Promise.all(
-      data.map(async () => {
+      data.map(async (_, index) => {
         let imgResponse = await fetch("https://picsum.photos/200/300");
         return imgResponse.url;
       })
     );
-    
+
     displayCategories(data);
     displayBooks(data, bookImages);
   } catch (error) {
@@ -108,13 +114,14 @@ async function getData() {
 function displayCategories(books) {
   let categories = new Set(books.map(book => book.genre.toLowerCase()));
   let categoryList = document.querySelector(".collections");
+
   categoryList.innerHTML = `
     <li class="list active" data-filter="all">
       <span class="active-list on"><i class="fa-regular fa-circle"></i></span>
       All Collections
     </li>
   `;
-  
+
   categories.forEach(category => {
     categoryList.innerHTML += `
       <li class="list" data-filter="${category}">
@@ -123,27 +130,40 @@ function displayCategories(books) {
       </li>
     `;
   });
+
   addCategoryFilter();
 }
 
-function displayBooks(books, bookImages) {
+function displayBooks(products, bookImages) {
+  
+  if (!list) {
+    console.error("'.book-list' elementi topilmadi! Iltimos, HTML-ni tekshiring.");
+    return;
+  }
+
   list.innerHTML = "";
-  books.forEach((book, index) => {
+
+  products.forEach((value, index) => {
     list.innerHTML += `
-      <div class="book-card" data-type="${book.genre.toLowerCase()}">
+        <div class="book-card" data-type="${value.genre.toLowerCase()}"> 
         <div class="book-image">
-          <img src="${bookImages[index]}" alt="Kitob rasmi" class="book-imagish" />
+          <img src="${bookImages[index]}" alt="" class="book-imagish" />
         </div>
         <div class="book-details">
-          <div class="book-type">${book.genre}</div>
-          <div class="book-title">${book.title}</div>
-          <div class="book-author">${book.author}</div>
+          <div class="book-type">${value.genre}</div>
+          <div class="book-title">${value.title}</div>
+          <div class="book-author">${value.author}</div>
           <div class="book-price">
-            <span class="book-price-symbol">$</span>${(Math.random() * 100 + 20).toFixed(2)}
+            <span class="book-price-symbol">$</span>${Math.ceil(Math.random() * 100 + 20)}
           </div>
           <div class="buttons">
-            <button class="addToCart">Add to cart</button>
+            <button class="addToCart" onclick="addToCard(${index})">Add to cart</button>
             <i class="ri-heart-line" id="heart"></i>
+            <i class='bx bx-dots-vertical-rounded options' onclick="option(${index})"></i>
+            <div class="inOption">
+              <i class='bx bx-pencil' onclick="renameItem(${index})"></i>
+              <i class="fa-solid fa-trash" onclick="removeItem(this)"></i>
+            </div>
           </div>
         </div>
       </div>
@@ -157,13 +177,17 @@ function addCategoryFilter() {
   categoryItems.forEach(item => {
     item.addEventListener("click", function () {
       let filter = this.getAttribute("data-filter");
+
       categoryItems.forEach(i => i.classList.remove("active"));
       this.classList.add("active");
+
       let books = document.querySelectorAll(".book-card");
+
       if (books.length === 0) {
         console.error("Kitob kartalari topilmadi! Iltimos, API dan kelayotgan ma'lumotlarni tekshiring.");
         return;
       }
+
       books.forEach(book => {
         if (filter === "all" || book.getAttribute("data-type") === filter) {
           book.style.display = "block";
@@ -180,7 +204,7 @@ document.getElementById("mySearch").addEventListener("input", function () {
   let books = document.querySelectorAll(".book-card");
 
   books.forEach((book) => {
-    let title = book.querySelector(".book-title").innerHTML.toLowerCase();
+    let title = book.querySelector(".book-title").innerText.toLowerCase();
     if (title.includes(searchValue)) {
       book.style.display = "block";
     } else {
